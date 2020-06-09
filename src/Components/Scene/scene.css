@@ -1,0 +1,65 @@
+.container-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.containers {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  height: 80vh;
+}
+
+.smallSquare {
+  height: 20vh;
+  width: 20vw;
+  /* background-color: lime; */
+}
+
+.left {
+  float: left;
+  border-left: 1px solid black;
+}
+
+.top {
+  border-top: 1px solid black;
+}
+
+.right {
+  float: right;
+  border-right: 1px solid black;
+}
+
+.bottom {
+  border-bottom: 1px solid black;
+}
+
+.bigSquare {
+  height: 71vh;
+  width: 62vw;
+  /* background-color: chocolate; */
+  position: absolute;
+  top: 12vh;
+  left: 19vw;
+  z-index: 999;
+}
+
+.outerSquare {
+  width: 75%;
+  margin: auto;
+}
+
+.rec {
+  text-align: right;
+  margin: 2vw;
+  font-weight: 500;
+}
