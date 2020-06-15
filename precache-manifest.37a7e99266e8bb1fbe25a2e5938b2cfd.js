@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "14e750e40bb1fdf9f4ba3f7785fb108b",
+    "revision": "11aeb539a0f8a25fab48d4b05d1ce4c1",
     "url": "/milestone-2/index.html"
   },
   {
-    "revision": "36acd560b419666c5fe1",
+    "revision": "81c17f65d8436026d91f",
     "url": "/milestone-2/static/css/main.bb2dab60.chunk.css"
   },
   {
-    "revision": "a85fe320a4de76f5ed13",
-    "url": "/milestone-2/static/js/2.3e86bf9f.chunk.js"
+    "revision": "f16b8dc93ea31d25d76d",
+    "url": "/milestone-2/static/js/2.c13ae863.chunk.js"
   },
   {
     "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/milestone-2/static/js/2.3e86bf9f.chunk.js.LICENSE.txt"
+    "url": "/milestone-2/static/js/2.c13ae863.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "36acd560b419666c5fe1",
-    "url": "/milestone-2/static/js/main.4bb0260c.chunk.js"
+    "revision": "81c17f65d8436026d91f",
+    "url": "/milestone-2/static/js/main.e8ab2b67.chunk.js"
   },
   {
-    "revision": "9834560be99075c1fb61",
-    "url": "/milestone-2/static/js/runtime-main.ce620bdb.js"
+    "revision": "a30b9eb9888187ad5aaf",
+    "url": "/milestone-2/static/js/runtime-main.003b355d.js"
   },
   {
     "revision": "e6f623ce8929666d12bb37dc6d4de448",
