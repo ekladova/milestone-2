@@ -10,7 +10,15 @@ import TaskBar from "./Components/TaskBar";
 import Timer from "./Components/Timer";
 
 function App() {
-  const [task, setTask] = useState({ name: "", time_min: 0, time_sec: 0 });
+  const [task, setTask] = useState({
+    name: "",
+    time_min: 0,
+    time_sec: 0,
+    id: function () {
+      return [+this.time_min, +this.time_sec];
+    },
+  });
+
   const onChangeInput = (event) =>
     setTask({ ...task, [event.target.id]: event.target.value });
 
@@ -27,14 +35,17 @@ function App() {
   const [time, setTime] = useState({ min: 0, sec: 0 });
 
   const onListClick = (event) => {
-    setTime({
-      ...time,
-      min: +event.target.parentNode.lastChild.previousSibling.previousSibling
-        .innerText,
+    console.log(event.currentTarget.id);
 
-      sec: +event.target.parentNode.lastChild.innerText,
-    });
-    console.log(time);
+    for (let i = 0; i < taskList.length; i++) {
+      if (taskList[i].name === event.currentTarget.id) {
+        return setTime({
+          ...time,
+          min: taskList[i].time_min,
+          sec: taskList[i].time_sec,
+        });
+      }
+    }
   };
 
   return (

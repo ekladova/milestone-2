@@ -8,9 +8,10 @@ const TaskBar = ({ taskList, onClick, time_min, time_sec }) => {
         taskList.map((task) => {
           return (
             <li
-              key={task.name + task.time_min + task.time_sec}
+              key={[task.name, [+task.time_min, +task.time_sec]]}
               className="listItem"
               onClick={onClick}
+              id={[task.name]}
             >
               <p>
                 <span>{task.name} </span>
