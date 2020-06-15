@@ -14,14 +14,14 @@ function App() {
   const onChangeInput = (event) =>
     setTask({ ...task, [event.target.id]: event.target.value });
 
-  let [taskList, setTaskList] = useState([]);
+  const [taskList, setTaskList] = useState([]);
 
   const onSubmitButton = () => {
     setTaskList(taskList.filter((el) => el.name !== task.name).concat(task));
   };
 
   const clearAll = () => {
-    setTaskList((taskList = []));
+    setTaskList([]);
   };
 
   const [time, setTime] = useState({ min: 0, sec: 0 });
@@ -29,11 +29,10 @@ function App() {
   const onListClick = (event) => {
     setTime({
       ...time,
-      min:
-        event.target.parentNode.lastChild.previousSibling.previousSibling
-          .innerText,
+      min: +event.target.parentNode.lastChild.previousSibling.previousSibling
+        .innerText,
 
-      sec: event.target.parentNode.lastChild.innerText,
+      sec: +event.target.parentNode.lastChild.innerText,
     });
     console.log(time);
   };
