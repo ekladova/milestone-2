@@ -1,11 +1,11 @@
 import React from "react";
 import "./input.css";
 
-const Input = ({ type, onChange, id, placeholder, value }) => {
+const Input = ({ type, onChange, id, placeholder, value, className }) => {
   return (
     <>
       <input
-        className="input"
+        className={className || "input"}
         type={type}
         id={id}
         placeholder={placeholder}

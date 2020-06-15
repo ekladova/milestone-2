@@ -1,0 +1,20 @@
+.flex-container-justify-height {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 40vw;
+  height: 10vw;
+  justify-content: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+}
+
+.listItem {
+  list-style-type: decimal;
+  cursor: pointer;
+  padding: 0.5vw;
+  border-radius: 5%;
+}
+.listItem:hover {
+  background-color: tomato;
+}

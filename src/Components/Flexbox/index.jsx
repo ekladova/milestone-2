@@ -1,8 +1,8 @@
 import React from "react";
 import "./box.css";
 
-const Flex = ({ children }) => {
-  return <div className="flex-container">{children}</div>;
+const Flex = ({ children, className }) => {
+  return <div className={className}>{children}</div>;
 };
 
 export default Flex;

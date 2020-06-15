@@ -1,8 +1,9 @@
-.flex-container {
+.flex-container-center-center {
   display: flex;
   flex-direction: row;
-  margin: auto;
+  margin: 0.5vw auto;
   width: fit-content;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }

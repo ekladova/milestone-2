@@ -1,5 +1,5 @@
 import React from "react";
-import red_dot from "./Picture-box/pictures-milestone-2/recording-dot-png.png";
+import red_dot from "./pictures-milestone-2/recording-dot-png.png";
 import "./scene.css";
 
 const Scene = ({ children }) => {
