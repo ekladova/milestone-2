@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Scene from "./Components/Scene";
@@ -9,7 +9,7 @@ import Button from "./Components/Button";
 import TaskBar from "./Components/TaskBar";
 import Timer from "./Components/Timer";
 
-import timeToMs from "./Components/Timer/constants";
+// import timeToMs from "./Components/Timer/constants";
 
 function App() {
   const [task, setTask] = useState({
@@ -40,19 +40,42 @@ function App() {
       (el) => el.name === event.currentTarget.id
     );
     setTime({ ...time, min: currentTime.time_min, sec: currentTime.time_sec });
+    changeTime();
   };
 
   const [off, setOff] = useState(false);
   const changeActive = () => {
     setOff(!off);
-    interval();
   };
 
-  const [timerInterval, setTimerInterval] = useState(50);
-  const interval = () => {
-    let newInterval = timeToMs(time.min, time.sec);
-    setTimerInterval(newInterval);
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+
+  const changeTime = () => {
+    setSeconds(time.sec);
+    setMinutes(time.min);
   };
+
+  useEffect(() => {
+    let interval = null;
+
+    if (off) {
+      interval = setInterval(() => {
+        if (seconds > 0) {
+          setSeconds(seconds - 1);
+        } else {
+          setSeconds(59);
+          setMinutes(minutes - 1);
+        }
+      }, 1000);
+    }
+  }, [off, seconds, minutes]);
+
+  // const [timerInterval, setTimerInterval] = useState(50);
+  // const interval = () => {
+  //   let newInterval = timeToMs(time.min, time.sec);
+  //   setTimerInterval(newInterval);
+  // };
 
   return (
     <div className="App">
@@ -61,11 +84,12 @@ function App() {
 
         <Timer
           active={off}
-          interval={timerInterval}
+          // interval={timerInterval}
           time_min={time.min}
           time_sec={time.sec}
-          numbers={time.min + ":" + time.sec}
-        ></Timer>
+        >
+          {minutes}:{seconds}
+        </Timer>
 
         <Box className="flex-container-center-center">
           <span>
