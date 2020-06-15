@@ -5,7 +5,7 @@ import tom_go from "./pictures-milestone-2/tom-go.png";
 // import Timer from "../Timer";
 import "./picture.css";
 
-const Picture = ({ onClick }) => {
+const Picture = ({ onClick, timeractive, activated }) => {
   const [PictureImg, SetPicture] = useState(false);
 
   const [text, setText] = useState(
@@ -14,10 +14,7 @@ const Picture = ({ onClick }) => {
     </p>
   );
 
-  const [off, setGo] = useState(false);
-  const activatedTimer = () => setGo(!off);
-
-  onClick = () => {
+  const onClickPicture = () => {
     SetPicture(!PictureImg);
     setText(
       <p className="clickMe" id="clickText">
@@ -28,12 +25,14 @@ const Picture = ({ onClick }) => {
 
   return (
     <>
-      <div className="pictureButton">
+      <div className="pictureButton" timeractive={timeractive}>
         <img
           className="picture"
-          onClick={onClick}
+          onClick={() => {
+            onClickPicture();
+            onClick();
+          }}
           alt="tomato"
-          activated={PictureImg.toString()}
           src={PictureImg ? tom_go : tom_stop}
         ></img>
         <span className="click-text">{text}</span>

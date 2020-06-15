@@ -9,6 +9,8 @@ import Button from "./Components/Button";
 import TaskBar from "./Components/TaskBar";
 import Timer from "./Components/Timer";
 
+import timeToMs from "./Components/Timer/constants";
+
 function App() {
   const [task, setTask] = useState({
     name: "",
@@ -33,26 +35,38 @@ function App() {
   };
 
   const [time, setTime] = useState({ min: 0, sec: 0 });
-
   const onListClick = (event) => {
-    console.log(event.currentTarget.id);
+    const currentTime = taskList.find(
+      (el) => el.name === event.currentTarget.id
+    );
+    setTime({ ...time, min: currentTime.time_min, sec: currentTime.time_sec });
+  };
 
-    for (let i = 0; i < taskList.length; i++) {
-      if (taskList[i].name === event.currentTarget.id) {
-        return setTime({
-          ...time,
-          min: taskList[i].time_min,
-          sec: taskList[i].time_sec,
-        });
-      }
-    }
+  const [off, setOff] = useState(false);
+  const changeActive = () => {
+    setOff(!off);
+    interval();
+  };
+
+  const [timerInterval, setTimerInterval] = useState(50);
+  const interval = () => {
+    let newInterval = timeToMs(time.min, time.sec);
+    setTimerInterval(newInterval);
   };
 
   return (
     <div className="App">
       <Scene>
-        <Picture />
-        <Timer numbers={time.min + ":" + time.sec}></Timer>
+        <Picture onClick={changeActive} />
+
+        <Timer
+          active={off}
+          interval={timerInterval}
+          time_min={time.min}
+          time_sec={time.sec}
+          numbers={time.min + ":" + time.sec}
+        ></Timer>
+
         <Box className="flex-container-center-center">
           <span>
             <p>Task: </p>
@@ -85,6 +99,7 @@ function App() {
             value={task.time_sec}
           />
         </Box>
+
         <Box className="flex-container-center-center">
           <Button type="submit" text="Add task" onClick={onSubmitButton} />
           <Button type="button" text="Clear tasks" onClick={clearAll} />
