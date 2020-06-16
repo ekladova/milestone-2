@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
-// import Timer from "../Timer";
 import "./picture.css";
-import { act } from "react-dom/test-utils";
 
 const Picture = ({ onClick, active, list, src }) => {
   const [PictureImg, SetPicture] = useState(false);
@@ -39,13 +37,6 @@ const Picture = ({ onClick, active, list, src }) => {
           src={src}
         ></img>
         <span className="click-text">{text}</span>
-        {/* <div>
-          {PictureImg ? (
-            <Timer numbers="0:00:01" start={activatedTimer} />
-          ) : (
-            <Timer numbers="0:00:00" start={activatedTimer} />
-          )}
-        </div> */}
       </div>
     </>
   );

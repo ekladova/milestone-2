@@ -76,6 +76,12 @@ function App() {
     return () => clearInterval(interval);
   }, [start, seconds, minutes]);
 
+  window.addEventListener("keyup", function (event) {
+    if (event.keyCode === 13) {
+      onSubmitButton();
+    }
+  });
+
   return (
     <div className="App">
       <Scene>
