@@ -36,6 +36,7 @@ function App() {
   const [minutes, setMinutes] = useState(0);
 
   const [time, setTime] = useState({ min: 0, sec: 0 });
+
   const onListClick = (event) => {
     const currentTime = taskList.find(
       (el) => el.name === event.currentTarget.id

@@ -3,7 +3,7 @@
   flex-direction: column;
   margin: auto;
   width: 40vw;
-  height: 10vw;
+  height: 8vw;
   justify-content: center;
   align-content: space-between;
   flex-wrap: wrap;
@@ -12,7 +12,7 @@
 .listItem {
   list-style-type: decimal;
   cursor: pointer;
-  padding: 0.5vw;
+  padding: 0.2vw;
   border-radius: 5%;
 }
 .listItem:hover {
