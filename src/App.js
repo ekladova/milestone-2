@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
+import tom_stop from "./pictures-milestone-2/tom-stop.png";
+import tom_go from "./pictures-milestone-2/tom-go.png";
+
 import Scene from "./Components/Scene";
 import Picture from "./Components/Picture-box/index";
 import Input from "./Components/Input";
@@ -9,16 +12,11 @@ import Button from "./Components/Button";
 import TaskBar from "./Components/TaskBar";
 import Timer from "./Components/Timer";
 
-// import timeToMs from "./Components/Timer/constants";
-
 function App() {
   const [task, setTask] = useState({
     name: "",
     time_min: 0,
     time_sec: 0,
-    id: function () {
-      return [+this.time_min, +this.time_sec];
-    },
   });
 
   const onChangeInput = (event) =>
@@ -34,60 +32,61 @@ function App() {
     setTaskList([]);
   };
 
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+
   const [time, setTime] = useState({ min: 0, sec: 0 });
   const onListClick = (event) => {
     const currentTime = taskList.find(
       (el) => el.name === event.currentTarget.id
     );
     setTime({ ...time, min: currentTime.time_min, sec: currentTime.time_sec });
-    changeTime();
-  };
-
-  const [off, setOff] = useState(false);
-  const changeActive = () => {
-    setOff(!off);
-  };
-
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
-
-  const changeTime = () => {
+    // changeTime();
     setSeconds(time.sec);
     setMinutes(time.min);
   };
 
+  const [start, setStart] = useState(false);
+  const changeActive = () => {
+    if (taskList.length > 0) setStart(!start);
+  };
+
+  // const changeTime = () => {
+  //   setSeconds(time.sec);
+  //   setMinutes(time.min);
+  // };
+
   useEffect(() => {
     let interval = null;
 
-    if (off) {
+    if (start) {
       interval = setInterval(() => {
-        if (seconds > 0) {
+        if (seconds > 0 && minutes >= 0) {
           setSeconds(seconds - 1);
-        } else {
+        } else if (seconds === 0 && minutes > 0) {
           setSeconds(59);
           setMinutes(minutes - 1);
+        } else if (seconds === 0 && minutes === 0) {
+          setStart(!start);
         }
       }, 1000);
+    } else if (!start && seconds !== 0 && minutes !== 0) {
+      clearInterval(interval);
     }
-  }, [off, seconds, minutes]);
-
-  // const [timerInterval, setTimerInterval] = useState(50);
-  // const interval = () => {
-  //   let newInterval = timeToMs(time.min, time.sec);
-  //   setTimerInterval(newInterval);
-  // };
+    return () => clearInterval(interval);
+  }, [start, seconds, minutes]);
 
   return (
     <div className="App">
       <Scene>
-        <Picture onClick={changeActive} />
+        <Picture
+          src={start ? tom_go : tom_stop}
+          list={taskList}
+          onClick={changeActive}
+          active={start}
+        />
 
-        <Timer
-          active={off}
-          // interval={timerInterval}
-          time_min={time.min}
-          time_sec={time.sec}
-        >
+        <Timer>
           {minutes}:{seconds}
         </Timer>
 

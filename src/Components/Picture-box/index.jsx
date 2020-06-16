@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import tom_stop from "./pictures-milestone-2/tom-stop.png";
-import tom_go from "./pictures-milestone-2/tom-go.png";
 
 // import Timer from "../Timer";
 import "./picture.css";
+import { act } from "react-dom/test-utils";
 
-const Picture = ({ onClick, timeractive, activated }) => {
+const Picture = ({ onClick, active, list, src }) => {
   const [PictureImg, SetPicture] = useState(false);
 
   const [text, setText] = useState(
@@ -15,17 +14,21 @@ const Picture = ({ onClick, timeractive, activated }) => {
   );
 
   const onClickPicture = () => {
-    SetPicture(!PictureImg);
-    setText(
-      <p className="clickMe" id="clickText">
-        Click me to {PictureImg ? "start" : "stop"} the timer
-      </p>
-    );
+    if (list.length > 0) {
+      SetPicture(!PictureImg);
+      setText(
+        <p className="clickMe" id="clickText">
+          Click me to {active ? "start" : "stop"} the timer
+        </p>
+      );
+    } else {
+      alert("Add tasks to begin!");
+    }
   };
 
   return (
     <>
-      <div className="pictureButton" timeractive={timeractive}>
+      <div active={active} list={list} className="pictureButton">
         <img
           className="picture"
           onClick={() => {
@@ -33,7 +36,7 @@ const Picture = ({ onClick, timeractive, activated }) => {
             onClick();
           }}
           alt="tomato"
-          src={PictureImg ? tom_go : tom_stop}
+          src={src}
         ></img>
         <span className="click-text">{text}</span>
         {/* <div>
