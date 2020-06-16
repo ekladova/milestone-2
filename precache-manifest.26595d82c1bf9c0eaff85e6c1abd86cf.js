@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4af71dcdd65e794b9976998969d14491",
+    "revision": "830960414f52e90a40a0e0473837b95e",
     "url": "/milestone-2/index.html"
   },
   {
-    "revision": "1a50beed99d4c79e4c5c",
+    "revision": "74ba9153427a7f84d766",
     "url": "/milestone-2/static/css/main.bb2dab60.chunk.css"
   },
   {
-    "revision": "f16b8dc93ea31d25d76d",
-    "url": "/milestone-2/static/js/2.c13ae863.chunk.js"
+    "revision": "c54821fd57e63085363d",
+    "url": "/milestone-2/static/js/2.c099b55a.chunk.js"
   },
   {
-    "revision": "e88a3e95b5364d46e95b35ae8c0dc27d",
-    "url": "/milestone-2/static/js/2.c13ae863.chunk.js.LICENSE.txt"
+    "revision": "e46fc7d39878ee64e7b083a156855138",
+    "url": "/milestone-2/static/js/2.c099b55a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1a50beed99d4c79e4c5c",
-    "url": "/milestone-2/static/js/main.22216783.chunk.js"
+    "revision": "74ba9153427a7f84d766",
+    "url": "/milestone-2/static/js/main.38899f76.chunk.js"
   },
   {
     "revision": "a30b9eb9888187ad5aaf",
