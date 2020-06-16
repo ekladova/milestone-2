@@ -43,8 +43,8 @@ function App() {
     );
     setTime({ ...time, min: currentTime.time_min, sec: currentTime.time_sec });
     // changeTime();
-    setSeconds(time.sec);
-    setMinutes(time.min);
+    setSeconds(+currentTime.time_sec);
+    setMinutes(+currentTime.time_min);
   };
 
   const [start, setStart] = useState(false);
